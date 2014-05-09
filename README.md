@@ -1,9 +1,9 @@
 # NeoPixel Strip Animator
-This is a library and a Pinoccio sketch that makes animating NeoPixel strands in a non-blocking manner as easy as possible. The main motivation for this is that to take full advantage of platforms like the *Pinoccio*, we need to let the main *loop* run freely, so that the board can take care of other things like network and serial communication.
+This is an Arduino library and a Pinoccio sketch that makes animating NeoPixel strands in a non-blocking way as easy as possible. The main motivation for this is that to take full advantage of platforms like the *Pinoccio*, we need to let the main loop run freely (no blocking delays), so that the board can take care of other things like network and serial communications.
 
 ## Requirements
 * The library requires the Adafruit Neopixel library, available in here: https://github.com/adafruit/Adafruit_NeoPixel
-* The Pinoccio sketch (`examples\PinoccioPixels`) requires the correct version of the Arduino IDE and the pinoccio-firmware libraries. More information in here: https://pinocc.io/solo
+* The Pinoccio sketch (`examples\PinoccioPixels`) requires the right version of the Arduino IDE and the pinoccio-firmware libraries. More information in here: https://pinocc.io/solo
 
 ## Installation
 Copy the contents of this repo into:
