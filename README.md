@@ -22,7 +22,11 @@ The included Pinoccio sketch adds the following ScoutScript commands (pull reque
     
 For a quick video demo see: https://plus.google.com/103920799952529517985/posts/avoH1sf18kK
 
-On the video, I'm using 6 Flora RGB NeoPixels sewed into a (super awesome, Internet-aware) necktie. 
+On the video, I'm using 6 Flora RGB NeoPixels sewed into a (super awesome, Internet-aware) necktie.
+
+### Driving 5V NeoPixels with Pinoccio
+
+The Pinoccio LiPo battery provides 3.7v to power external devices. This is ok for the Pinoccio and a short length of NeoPixels (I've tried up to 6 Flora pixels with no problems), but to drive longer NeoPixel strands, see the notes on Adafruit's NeoPixel page https://learn.adafruit.com/adafruit-neopixel-uberguide/power#driving-5v-neopixels-from-3-dot-3v-microcontrollers
 
 ## Using the library
 
