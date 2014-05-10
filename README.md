@@ -18,6 +18,7 @@ The included Pinoccio sketch adds the following ScoutScript commands (pull reque
     pixels.greenwipe
     pixels.bluewipe
     pixels.nightrider
+    pixels.fadeout
     
 For a quick video demo see: https://plus.google.com/103920799952529517985/posts/avoH1sf18kK
 

@@ -66,6 +66,10 @@ ColorWipeAnimation::ColorWipeAnimation(uint32_t color, int pixelInterval)
 void ColorWipeAnimation::setup(Adafruit_NeoPixel *strip)
 {
   _strip = strip;
+  for(int i = 0; i < _strip->numPixels();i++){
+      _strip->setBrightness(255);
+    }
+
 }
 
 
@@ -108,6 +112,7 @@ NightRiderAnimation::NightRiderAnimation(uint32_t color, int pixelInterval)
 void NightRiderAnimation::setup(Adafruit_NeoPixel *strip)
 {
   _strip = strip;
+  _strip->setBrightness(255);
 }
 
 
@@ -138,6 +143,45 @@ bool NightRiderAnimation::isDone()
   return _done;
 }
 
+/////////////////////////////////////////////////////////////////////////////////////
+// FadeOutAnimation - It will linearly decrease the brightness of the given color.
 
+FadeOutAnimation::FadeOutAnimation(uint32_t color, int millisToFadeOut)
+{
+  _lastTimeCheck = millis();
+  _done = false;
+  _millisToFadeOut = millisToFadeOut;
+  _currentBrightness = 255;
+  _color = color;
+  _done = false;
+}
 
+void FadeOutAnimation::setup(Adafruit_NeoPixel *strip)
+{
+  _strip = strip;
+  _deltaBrightnessDecrease = (unsigned long)(_millisToFadeOut / 255.0);
+}
 
+void FadeOutAnimation::loop()
+{
+  if(isDone()) return;
+
+  unsigned long now = millis();
+  if((now - _lastTimeCheck) > _deltaBrightnessDecrease){
+    _currentBrightness--;
+    for(int i = 0; i < _strip->numPixels();i++){
+      _strip->setPixelColor(i, _color);
+      _strip->setBrightness(_currentBrightness);
+    }
+    _strip->show();
+    _lastTimeCheck = now;
+    if(_currentBrightness < 1){
+      _done = true;
+    }
+  }
+}
+
+bool FadeOutAnimation::isDone()
+{
+  return _done;
+}

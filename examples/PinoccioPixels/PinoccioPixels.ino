@@ -56,6 +56,11 @@ numvar neopixelNightrider(void)
   neoPixelStripAnimator.startAnimation(new NightRiderAnimation(Adafruit_NeoPixel::Color(255,0,0), 70));
 }
 
+numvar neopixelFadeOut(void)
+{
+  neoPixelStripAnimator.startAnimation(new FadeOutAnimation(Adafruit_NeoPixel::Color(255,255,255), 800));
+}
+
 void setup() {
   Scout.setup();
   neoPixelStripAnimator.setup();
@@ -64,6 +69,7 @@ void setup() {
   addBitlashFunction("pixels.bluewipe", (bitlash_function)startBlueWipeAnim);
   addBitlashFunction("pixels.redwipe", (bitlash_function)startRedWipeAnim);
   addBitlashFunction("pixels.nightrider", (bitlash_function)neopixelNightrider);
+  addBitlashFunction("pixels.fadeout", (bitlash_function)neopixelFadeOut);
 }
 
 void loop() {

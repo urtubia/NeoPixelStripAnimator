@@ -71,3 +71,22 @@ class NightRiderAnimation : public INeoPixelAnimation {
 };
 
 
+/////////////////////////////////////////////////////////////////////////////////////
+// FadeOutAnimation - It will linearly decrease the brightness of the given color.
+class FadeOutAnimation : public INeoPixelAnimation {
+  public:
+    FadeOutAnimation(uint32_t color, int millisToFadeOut);
+    virtual void loop();
+    virtual bool isDone();
+    virtual void setup(Adafruit_NeoPixel *strip);
+  private:
+    uint32_t _color;
+    bool _done;
+    int _currentBrightness;
+    unsigned long _millisToFadeOut;
+    unsigned long _lastTimeCheck;
+    unsigned long _deltaBrightnessDecrease;
+    Adafruit_NeoPixel *_strip;
+
+};
+
